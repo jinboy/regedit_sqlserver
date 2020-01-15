@@ -29,7 +29,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.buttonQueryFromDB = new System.Windows.Forms.Button();
             this.buttonAddToReg = new System.Windows.Forms.Button();
             this.buttonFindFromReg = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -77,15 +77,15 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button4
+            // buttonQueryFromDB
             // 
-            this.button4.Location = new System.Drawing.Point(202, 79);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 9;
-            this.button4.Text = "查找";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.buttonQueryFromDB.Location = new System.Drawing.Point(202, 79);
+            this.buttonQueryFromDB.Name = "buttonQueryFromDB";
+            this.buttonQueryFromDB.Size = new System.Drawing.Size(75, 23);
+            this.buttonQueryFromDB.TabIndex = 9;
+            this.buttonQueryFromDB.Text = "查找";
+            this.buttonQueryFromDB.UseVisualStyleBackColor = true;
+            this.buttonQueryFromDB.Click += new System.EventHandler(this.button4_Click);
             // 
             // buttonAddToReg
             // 
@@ -114,7 +114,7 @@
             this.ClientSize = new System.Drawing.Size(394, 234);
             this.Controls.Add(this.buttonFindFromReg);
             this.Controls.Add(this.buttonAddToReg);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.buttonQueryFromDB);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -132,7 +132,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button buttonQueryFromDB;
         private System.Windows.Forms.Button buttonAddToReg;
         private System.Windows.Forms.Button buttonFindFromReg;
     }

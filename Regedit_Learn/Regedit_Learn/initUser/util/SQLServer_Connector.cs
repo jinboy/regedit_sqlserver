@@ -43,7 +43,6 @@ namespace Regedit_Learn {
             //后面拼写查询语句要用到窗体的信息
             string user = "陈济扬";//获取用户名
             //string pwd = textBox2.Text;//获取密码
-            User a = null;
             //创建数据库连接类的对象
             SqlConnection con = new SqlConnection(_connString);
             //将连接打开
@@ -57,12 +56,12 @@ namespace Regedit_Learn {
             //用cmd的函数执行语句，返回SqlDataReader对象dr,dr就是返回的结果集（也就是数据库中查询到的表数据）
             SqlDataReader dr = cmd.ExecuteReader();
             var jsonStr = toJSONStr(dr);
-            var jsonObj = JsonConvert.DeserializeObject<Object>(jsonStr);
+            UserInfo userInfo = JsonConvert.DeserializeObject<UserInfo>(jsonStr);
             //用dr的read函数，每执行一次，返回一个包含下一行数据的集合dr，在执行read函数之前，dr并不是集合
             if (dr.Read()) {
-                a.code = dr[0].ToString();
-                a.name = dr[1].ToString();
-                a.password = dr[2].ToString();
+
+                //a.name = dr[1].ToString();
+                //a.password = dr[2].ToString();
                 //label4.Text = "用户名" + a.name + "密码" + a.password;
                 //dr[]里面可以填列名或者索引，显示获得的数据
                 // MessageBox.Show("当前用户信息存在"+dr[1].ToString() + dr[2].ToString());

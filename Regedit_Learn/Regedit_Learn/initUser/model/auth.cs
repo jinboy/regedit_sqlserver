@@ -12,27 +12,18 @@ namespace Regedit_Learn.initUser.model {
         Boolean loginOk = true;
         string _baseKey = "HARDWARE";
         string _subKey = @"Dayang\dydatabase\NetManageDBSetting";
-        Register register = null;
+        Register register = null;//注册表操作类
         public Auth(string baseKey, string subKey, RegisterInfo registerInfo) {
             this._baseKey = baseKey;
             this._subKey = subKey;
-            this.register = new Register(this._baseKey, this._subKey, registerInfo);
+            this.register = new Register(this._baseKey, this._subKey, registerInfo);// 初始化注册表操作类
         }
 
-        #region
-        public RegisterInfo _getRegInfo() {
-            RegisterInfo registerInfo = null;
-            if (this.register != null) {
-                RegisterInfoVO registerInfoVO = this.register.GetInfoFromRegedit();
-                if (registerInfoVO != null) {
-                    registerInfo = new RegisterInfo(registerInfoVO.serverName,
-                                                                                             registerInfoVO.serverName,
-                                                                                             registerInfoVO.userName,
-                                                                                             registerInfoVO.password,
-                                                                                             registerInfoVO.databaseType);
-                }
-            }   
-            return registerInfo;
+        #region 初始化注册表信息
+        public RegisterInfoVO _getRegInfo() {
+            // 主要是用户更新后刷新注册表信息
+            // 从数据库中获取到新的用户信息，多频道数据库抛出uuid -> 查询本地数据库对应的uuid -> 
+            return null;
         }
         #endregion
 

@@ -72,7 +72,7 @@ namespace Regedit_Learn {
         }
         #endregion
 
-        #region 从注册表中获取信息
+        #region 从注册表中获取信息按钮事件
         private void buttonFindFromReg_Click(object sender, EventArgs e) {
             //string _baseKey = "HARDWARE";
             //string _subKey = @"Dayang\dydatabase\NetManageDBSetting";
@@ -82,8 +82,10 @@ namespace Regedit_Learn {
 
             string _baseKey = "HARDWARE";
             string _subKey = @"Dayang\dydatabase\NetManageDBSetting";
-            Auth auth = new Auth(_baseKey, _subKey);
-            RegisterInfoVO registerInfoVO = auth.authCheck();
+            RegisterInfo registerInfo = new RegisterInfo("178.20.10.85", "Net2Dynetmanage2019", "sa", "lq612176()", 00000001);
+            Auth auth = new Auth(_baseKey, _subKey, registerInfo);
+            RegisterInfoVO registerInfoVO = auth.authCheck();//ok
+
         }
         #endregion
 
