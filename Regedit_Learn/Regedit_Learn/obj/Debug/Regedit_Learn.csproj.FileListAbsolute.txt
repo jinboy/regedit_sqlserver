@@ -1,0 +1,9 @@
+E:\work\workspace\C#\Regedit_Learn\Regedit_Learn\bin\Debug\Regedit_Learn.exe.config
+E:\work\workspace\C#\Regedit_Learn\Regedit_Learn\bin\Debug\Regedit_Learn.exe
+E:\work\workspace\C#\Regedit_Learn\Regedit_Learn\bin\Debug\Regedit_Learn.pdb
+E:\work\workspace\C#\Regedit_Learn\Regedit_Learn\obj\Debug\Regedit_Learn.csprojResolveAssemblyReference.cache
+E:\work\workspace\C#\Regedit_Learn\Regedit_Learn\obj\Debug\Regedit_Learn.Form1.resources
+E:\work\workspace\C#\Regedit_Learn\Regedit_Learn\obj\Debug\Regedit_Learn.Properties.Resources.resources
+E:\work\workspace\C#\Regedit_Learn\Regedit_Learn\obj\Debug\Regedit_Learn.csproj.GenerateResource.Cache
+E:\work\workspace\C#\Regedit_Learn\Regedit_Learn\obj\Debug\Regedit_Learn.exe
+E:\work\workspace\C#\Regedit_Learn\Regedit_Learn\obj\Debug\Regedit_Learn.pdb
