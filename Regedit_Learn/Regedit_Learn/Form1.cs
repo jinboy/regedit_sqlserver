@@ -24,13 +24,7 @@ namespace Regedit_Learn {
 
         #region 窗体加载事件
         private void Form1_Load(object sender, EventArgs e) {
-            RegistryKey mreg = Registry.LocalMachine.OpenSubKey("HARDWARE", true).CreateSubKey("Baidu").CreateSubKey("BaiduYunGuanjia");// 有则读取，无则创建
-            if (mreg.GetValue("Version") != null) {
-                //textBox1.Text = "键值项：Version 值：" + mreg.GetValue("Version").ToString();
-            }
-            else {
-                mreg.SetValue("Version", "6.8.10");
-            }
+            this.comboBox1_load();
         }
         #endregion
 
@@ -58,7 +52,7 @@ namespace Regedit_Learn {
         private void button4_Click(object sender, EventArgs e) {
             string _connString = "server=178.20.10.85;database=Net2Dynetmanage2019;uid=sa;pwd=lq612176()";
             SQLServer_Connector con = new SQLServer_Connector(_connString);
-            con.query();
+            //con.query();
         }
         #endregion
 
@@ -84,10 +78,31 @@ namespace Regedit_Learn {
             string _subKey = @"Dayang\dydatabase\NetManageDBSetting";
             RegisterInfo registerInfo = new RegisterInfo("178.20.10.85", "Net2Dynetmanage2019", "sa", "lq612176()", 00000001);
             Auth auth = new Auth(_baseKey, _subKey, registerInfo);
-            RegisterInfoVO registerInfoVO = auth.authCheck();//ok
-
+            RegisterInfoVO registerInfoVO = auth.authCheck(SQLServer_Connector.query("2926C8D1-D7AF-4E85-939E-AB1759F69744"));//ok，校验用户信息
+            //TODO 这边需要做的是将
+            if (registerInfoVO != null) {// 人脸或者密码校验通过
+                return;
+            }
+            // 继续人脸校验或者密码校验
         }
         #endregion
 
+        #region 下拉选择框
+        private void comboBox1_load() {
+            comboBox1.Items.Add("城市高清网");
+            comboBox1.Items.Add("生活高清网");
+        }
+        #endregion
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) {
+
+            MessageBox.Show("您选择的频道是：" + comboBox1.Text, "提示");
+            if (comboBox1.Text.Length != 0) {
+                RegisterInfo registerInfo = InitUserDBInfo.init(comboBox1.Text);
+
+            }
+
+
+        }
     }
 }

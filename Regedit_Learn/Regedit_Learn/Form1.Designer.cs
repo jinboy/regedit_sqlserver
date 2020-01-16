@@ -32,6 +32,7 @@
             this.buttonQueryFromDB = new System.Windows.Forms.Button();
             this.buttonAddToReg = new System.Windows.Forms.Button();
             this.buttonFindFromReg = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -107,11 +108,21 @@
             this.buttonFindFromReg.UseVisualStyleBackColor = true;
             this.buttonFindFromReg.Click += new System.EventHandler(this.buttonFindFromReg_Click);
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(356, 52);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 20);
+            this.comboBox1.TabIndex = 12;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(394, 234);
+            this.ClientSize = new System.Drawing.Size(971, 524);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.buttonFindFromReg);
             this.Controls.Add(this.buttonAddToReg);
             this.Controls.Add(this.buttonQueryFromDB);
@@ -135,6 +146,7 @@
         private System.Windows.Forms.Button buttonQueryFromDB;
         private System.Windows.Forms.Button buttonAddToReg;
         private System.Windows.Forms.Button buttonFindFromReg;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
 

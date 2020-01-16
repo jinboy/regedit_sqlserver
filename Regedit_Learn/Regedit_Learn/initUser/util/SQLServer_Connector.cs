@@ -11,10 +11,10 @@ using Newtonsoft.Json;
 
 namespace Regedit_Learn {
     class SQLServer_Connector {
-        string _connString = "server=178.20.10.85;database=Net2Dynetmanage2019;uid=sa;pwd=lq612176()";
+        static string _connectString = "server=178.20.10.85;database=Net2Dynetmanage2019;uid=sa;pwd=lq612176()";
 
         public SQLServer_Connector(string connStr) {
-            _connString = connStr;
+            _connectString = connStr;
         }
 
         #region 打开数据库
@@ -22,56 +22,49 @@ namespace Regedit_Learn {
         /// 打开数据库
         /// </summary>
         /// <returns></returns>
-        public bool OpenDataBase() {
-            try {
-                //创建数据库连接对象
-                using (SqlConnection sqlConn = new SqlConnection(_connString)) {
-                    //打开连接
-                    sqlConn.Open();
-                    sqlConn.Close();
-                    return true;
-                }
-            }
-            catch {
-                return false;
-            }
-        }
+        //public bool OpenDataBase() {
+        //    try {
+        //        //创建数据库连接对象
+        //        using (SqlConnection sqlConn = new SqlConnection(SQLServer_Connector._connectString)) {
+        //            //打开连接
+        //            sqlConn.Open();
+        //            sqlConn.Close();
+        //            return true;
+        //        }
+        //    }
+        //    catch {
+        //        return false;
+        //    }
+        //}
         #endregion
 
-        #region 查找
-        public void query() {
-            //后面拼写查询语句要用到窗体的信息
-            string user = "陈济扬";//获取用户名
-            //string pwd = textBox2.Text;//获取密码
-            //创建数据库连接类的对象
-            SqlConnection con = new SqlConnection(_connString);
-            //将连接打开
-            con.Open();
-            //执行con对象的函数，返回一个SqlCommand类型的对象
-            SqlCommand cmd = con.CreateCommand();
-            //把输入的数据拼接成sql语句，并交给cmd对象
-            //cmd.CommandText = "select*from users where name='" + user + "'and pwd='" + pwd + "'";
-            cmd.CommandText = "select * from UserInfo where strName='" + user + "'";
+        #region 查找 ok
+        /// <summary>
+        /// 根据用户唯一ID查找用户信息
+        /// </summary>
+        /// <param name="uid"></param>
+        /// <returns></returns>
+        public static UserInfo query(String uid) {
+            UserInfo userInfo = null;
+            if (uid.Length != 0) {
+                //后面拼写查询语句要用到窗体的信息
+                SqlConnection con = new SqlConnection(SQLServer_Connector._connectString); //创建数据库连接类的对象
+                con.Open(); //将连接打开
+                SqlCommand cmd = con.CreateCommand();//执行con对象的函数，返回一个SqlCommand类型的对象
+                //把输入的数据拼接成sql语句，并交给cmd对象
+                //cmd.CommandText = "select*from users where name='" + user + "'and pwd='" + pwd + "'";
+                cmd.CommandText = "select * from UserInfo where strUserID='" + uid + "'";
 
-            //用cmd的函数执行语句，返回SqlDataReader对象dr,dr就是返回的结果集（也就是数据库中查询到的表数据）
-            SqlDataReader dr = cmd.ExecuteReader();
-            var jsonStr = toJSONStr(dr);
-            UserInfo userInfo = JsonConvert.DeserializeObject<UserInfo>(jsonStr);
-            //用dr的read函数，每执行一次，返回一个包含下一行数据的集合dr，在执行read函数之前，dr并不是集合
-            if (dr.Read()) {
-
-                //a.name = dr[1].ToString();
-                //a.password = dr[2].ToString();
-                //label4.Text = "用户名" + a.name + "密码" + a.password;
-                //dr[]里面可以填列名或者索引，显示获得的数据
-                // MessageBox.Show("当前用户信息存在"+dr[1].ToString() + dr[2].ToString());
-                //  MessageBox.Show("当前用户信息" + a.name + a.password);
+                //用cmd的函数执行语句，返回SqlDataReader对象dr,dr就是返回的结果集（也就是数据库中查询到的表数据）
+                SqlDataReader dr = cmd.ExecuteReader();
+                var jsonStr = SQLServer_Connector.toJSONStr(dr);
+                userInfo = JsonConvert.DeserializeObject<UserInfo>(jsonStr);
+                con.Close();//用完后关闭连接，以免影响其他程序访问
             }
-            else {
-                MessageBox.Show("当前用户信息不存在");
+            if (userInfo == null) {
+                MessageBox.Show("抱歉，未查询到用户！");
             }
-            //用完后关闭连接，以免影响其他程序访问
-            con.Close();
+            return userInfo;
         }
         #endregion
 
@@ -131,7 +124,7 @@ namespace Regedit_Learn {
         //}
         #endregion
 
-        public string toJSONStr(SqlDataReader o) {
+        public static string toJSONStr(SqlDataReader o) {
             StringBuilder s = new StringBuilder();
             //s.Append("[");
             if (o.HasRows)

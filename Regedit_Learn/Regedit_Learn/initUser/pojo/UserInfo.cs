@@ -9,6 +9,7 @@ namespace Regedit_Learn {
         public String strUserID { set; get; }
         public String strWorkCode { set; get; }
         public String strName { set; get; }
+        public String strPassword { set; get; }
         public Int16 dwOrigin { set; get; }
         public String strMobilePhone { set; get; }
         public String strTelephone { set; get; }

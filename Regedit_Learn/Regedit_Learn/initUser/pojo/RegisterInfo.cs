@@ -19,5 +19,9 @@ namespace Regedit_Learn.initUser.pojo {
             password = _password;
             databaseType = _databaseType;
         }
+
+        public RegisterInfo() {
+            // TODO: Complete member initialization
+        }
     }
 }

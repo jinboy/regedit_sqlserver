@@ -13,11 +13,14 @@ namespace Regedit_Learn.initUser.model {
         string _baseKey = "HARDWARE";
         string _subKey = @"Dayang\dydatabase\NetManageDBSetting";
         Register register = null;//注册表操作类
+
+        #region 构造函数
         public Auth(string baseKey, string subKey, RegisterInfo registerInfo) {
             this._baseKey = baseKey;
             this._subKey = subKey;
             this.register = new Register(this._baseKey, this._subKey, registerInfo);// 初始化注册表操作类
         }
+        #endregion
 
         #region 初始化注册表信息
         public RegisterInfoVO _getRegInfo() {
@@ -29,15 +32,16 @@ namespace Regedit_Learn.initUser.model {
 
 
         #region 身份校验
-        public RegisterInfoVO authCheck() {
+        public RegisterInfoVO authCheck(UserInfo userInfo) {
             //1.用户进行人脸识别->通过->切换注册表->跳转指定频道，实现自动登录
             //2.用户人脸识别失败->输入用户名密码->通过->切换注册表->跳转指定频道，实现自动登录
             RegisterInfoVO registerInfoVO = null;
             if (faceOk || loginOk) {// 人脸校验成功或者账号密码校验成功
                 // 根据uuid检验当前身份与注册表中的上次驻留身份是否一致，该uuid是存在本地数据库的唯一标识
-                if (false) {//不是同一个人，更新注册表
-                    this.register.UpdateRegInfo();
+                if (true) {//不是同一个人，更新注册表，这边校验uuid
+                    this.register.UpdateRegInfo(userInfo);
                 }
+
                 registerInfoVO = this.register.GetInfoFromRegedit();
             }
             return registerInfoVO;
