@@ -61,7 +61,7 @@ namespace Regedit_Learn {
             string _baseKey = "HARDWARE";
             string _subKey = @"Dayang\dydatabase\NetManageDBSetting";
             RegisterInfo registerInfo = new RegisterInfo("178.20.10.85", "Net2Dynetmanage2019", "sa", "lq612176()", 00000001);
-            Register register = new Register(_baseKey, _subKey, registerInfo);
+            RegisterOperator register = new RegisterOperator(_baseKey, _subKey, registerInfo);
             register.AddInfoToRegedit();
         }
         #endregion
@@ -91,15 +91,18 @@ namespace Regedit_Learn {
         private void comboBox1_load() {
             comboBox1.Items.Add("城市高清网");
             comboBox1.Items.Add("生活高清网");
+            comboBox1.Items.Add("测试数据库");
         }
         #endregion
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) {
-
+            string _baseKey = "HARDWARE";
+            string _subKey = @"Dayang\dydatabase\NetManageDBSetting";
             MessageBox.Show("您选择的频道是：" + comboBox1.Text, "提示");
             if (comboBox1.Text.Length != 0) {
                 RegisterInfo registerInfo = InitUserDBInfo.init(comboBox1.Text);
-
+                RegisterOperator registerOperator = new RegisterOperator(_baseKey, _subKey, registerInfo);
+                registerOperator.AddInfoToRegedit();//ok 多频道信息注入注册表
             }
 
 

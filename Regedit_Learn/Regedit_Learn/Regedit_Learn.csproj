@@ -65,8 +65,9 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="initUser\model\Auth.cs" />
+    <Compile Include="initUser\model\InitUserDBInfo.cs" />
     <Compile Include="initUser\model\InitUserLogin.cs" />
-    <Compile Include="initUser\model\Register.cs" />
+    <Compile Include="initUser\model\RegisterOperator.cs" />
     <Compile Include="initUser\pojo\RegisterInfo.cs" />
     <Compile Include="initUser\vo\RegisterInfoVO.cs" />
     <Compile Include="Program.cs" />

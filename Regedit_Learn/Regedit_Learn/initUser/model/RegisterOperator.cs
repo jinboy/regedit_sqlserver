@@ -8,11 +8,11 @@ using Regedit_Learn.initUser.pojo;
 using Regedit_Learn.initUser.vo;
 
 namespace Regedit_Learn.initUser.model {
-    public class Register {
+    public class RegisterOperator {
         string _baseKey = "HARDWARE";
         string _subKey = @"Dayang\dydatabase\NetManageDBSetting";
         RegisterInfo _registerInfo;
-        public Register(string baseKey, string subKey, RegisterInfo registerInfo) {
+        public RegisterOperator(string baseKey, string subKey, RegisterInfo registerInfo) {
             _baseKey = baseKey;
             _subKey = subKey;
             _registerInfo = registerInfo;
@@ -23,11 +23,11 @@ namespace Regedit_Learn.initUser.model {
             RegistryKey rkChild = rkLocalMachine.OpenSubKey(_baseKey, true).CreateSubKey(_subKey);
             var abc = this._registerInfo;
             //rkChild.SetValue("uuid", "");
-            rkChild.SetValue("Server Name", _registerInfo.serverName);
+            rkChild.SetValue("Datbase Server Name", _registerInfo.serverName);
             rkChild.SetValue("Datbase Type", _registerInfo.databaseType, RegistryValueKind.DWord);
             rkChild.SetValue("Database Name", _registerInfo.databaseName);
             rkChild.SetValue("Database User Name", _registerInfo.userName);
-            rkChild.SetValue("Password", _registerInfo.password);
+            rkChild.SetValue("Datbase Password", _registerInfo.password);
         }
         #endregion
 

@@ -12,13 +12,13 @@ namespace Regedit_Learn.initUser.model {
         Boolean loginOk = true;
         string _baseKey = "HARDWARE";
         string _subKey = @"Dayang\dydatabase\NetManageDBSetting";
-        Register register = null;//注册表操作类
+        RegisterOperator register = null;//注册表操作类
 
         #region 构造函数
         public Auth(string baseKey, string subKey, RegisterInfo registerInfo) {
             this._baseKey = baseKey;
             this._subKey = subKey;
-            this.register = new Register(this._baseKey, this._subKey, registerInfo);// 初始化注册表操作类
+            this.register = new RegisterOperator(this._baseKey, this._subKey, registerInfo);// 初始化注册表操作类
         }
         #endregion
 

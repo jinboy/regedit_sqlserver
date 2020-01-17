@@ -38,7 +38,7 @@ namespace Regedit_Learn {
         //}
         #endregion
 
-        #region 查找 ok
+        #region 查找 ok 实际上多频道数据库仅仅是查询即可
         /// <summary>
         /// 根据用户唯一ID查找用户信息
         /// </summary>
